@@ -56,17 +56,6 @@ public class User {
 	@Column(name = "CREATED_BY")
 	private String createdBy;
 
-	@OneToOne(mappedBy = "user")
-	private Credential credential;
-
-	public Credential getCredential() {
-		return credential;
-	}
-
-	public void setCredential(Credential credential) {
-		this.credential = credential;
-	}
-
 	@ElementCollection
 	@CollectionTable(name = "USER_ADDRESS", joinColumns = @JoinColumn(name = "USER_ID"))
 	@AttributeOverrides({ @AttributeOverride(name = "addressLine1", column = @Column(name = "USER_ADDRESS_LINE_1")),
@@ -75,6 +64,17 @@ public class User {
 			@AttributeOverride(name = "state", column = @Column(name = "STATE")),
 			@AttributeOverride(name = "zipCode", column = @Column(name = "ZIP_CODE")) })
 	private List<Address> address = new ArrayList<>();
+
+	@OneToOne(mappedBy = "user")
+	private Credential credentail;
+
+	public Credential getCredentail() {
+		return credentail;
+	}
+
+	public void setCredentail(Credential credentail) {
+		this.credentail = credentail;
+	}
 
 	public List<Address> getAddress() {
 		return address;

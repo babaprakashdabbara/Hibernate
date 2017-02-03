@@ -22,6 +22,17 @@ public class Transaction {
 	@Column(name = "TRANSACTION_TYPE")
 	private String transactionType;
 
+	@Column(name = "TITLE")
+	private String title;
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
 	@Column(name = "AMOUNT")
 	private BigDecimal amount;
 
