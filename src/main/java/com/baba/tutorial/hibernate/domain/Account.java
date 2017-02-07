@@ -1,20 +1,10 @@
 package com.baba.tutorial.hibernate.domain;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 @Entity
 @Table(name = "ACCOUNT")
@@ -51,8 +41,7 @@ public class Account {
 	@Column(name = "CREATED_BY")
 	private String createdBy;
 
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "ACCOUNT_ID", nullable = false)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="account")
 	private List<Transaction> transactions = new ArrayList<>();
 
 	public List<Transaction> getTransactions() {

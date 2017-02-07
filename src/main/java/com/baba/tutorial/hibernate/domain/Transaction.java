@@ -1,140 +1,146 @@
 package com.baba.tutorial.hibernate.domain;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
-
 import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
 @Table(name = "TRANSACTION")
 public class Transaction {
 
-	@Id
-	@GeneratedValue
-	@Column(name = "TRANSACTION_ID")
-	private Long transactionId;
+    @Id
+    @GeneratedValue
+    @Column(name = "TRANSACTION_ID")
+    private Long transactionId;
 
-	@Column(name = "TRANSACTION_TYPE")
-	private String transactionType;
+    @Column(name = "TRANSACTION_TYPE")
+    private String transactionType;
 
-	@Column(name = "TITLE")
-	private String title;
+    @Column(name = "TITLE")
+    private String title;
 
-	public String getTitle() {
-		return title;
-	}
+    @Column(name = "AMOUNT")
+    private BigDecimal amount;
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    @Column(name = "INITIAL_BALANCE")
+    private BigDecimal initialBalance;
 
-	@Column(name = "AMOUNT")
-	private BigDecimal amount;
+    @Column(name = "CLOSING_BALANCE")
+    private BigDecimal closingBalance;
 
-	@Column(name = "INITIAL_BALANCE")
-	private BigDecimal initialBalance;
+    @Column(name = "NOTES")
+    private String notes;
 
-	@Column(name = "CLOSING_BALANCE")
-	private BigDecimal closingBalance;
+    @Column(name = "LAST_UPDATED_DATE")
+    private Date lastUpdatedDate;
 
-	@Column(name = "NOTES")
-	private String notes;
+    @Column(name = "LAST_UPDATED_BY")
+    private String lastUpdatedBy;
 
-	@Column(name = "LAST_UPDATED_DATE")
-	private Date lastUpdatedDate;
+    @Column(name = "CREATED_DATE")
+    private Date createdDate;
 
-	@Column(name = "LAST_UPDATED_BY")
-	private String lastUpdatedBy;
+    @Column(name = "CREATED_BY")
+    private String createdBy;
 
-	@Column(name = "CREATED_DATE")
-	private Date createdDate;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ACCOUNT_ID")
+    private Account account;
 
-	@Column(name = "CREATED_BY")
-	private String createdBy;
+    public Account getAccount() {
+        return account;
+    }
 
-	public Long getTransactionId() {
-		return transactionId;
-	}
+    public void setAccount(Account account) {
+        this.account = account;
+    }
 
-	public void setTransactionId(Long transactionId) {
-		this.transactionId = transactionId;
-	}
+    public Long getTransactionId() {
+        return transactionId;
+    }
 
-	public String getTransactionType() {
-		return transactionType;
-	}
+    public void setTransactionId(Long transactionId) {
+        this.transactionId = transactionId;
+    }
 
-	public void setTransactionType(String transactionType) {
-		this.transactionType = transactionType;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public BigDecimal getAmount() {
-		return amount;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public void setAmount(BigDecimal amount) {
-		this.amount = amount;
-	}
+    public String getTransactionType() {
+        return transactionType;
+    }
 
-	public BigDecimal getInitialBalance() {
-		return initialBalance;
-	}
+    public void setTransactionType(String transactionType) {
+        this.transactionType = transactionType;
+    }
 
-	public void setInitialBalance(BigDecimal initialBalance) {
-		this.initialBalance = initialBalance;
-	}
+    public BigDecimal getAmount() {
+        return amount;
+    }
 
-	public BigDecimal getClosingBalance() {
-		return closingBalance;
-	}
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
 
-	public void setClosingBalance(BigDecimal closingBalance) {
-		this.closingBalance = closingBalance;
-	}
+    public BigDecimal getInitialBalance() {
+        return initialBalance;
+    }
 
-	public String getNotes() {
-		return notes;
-	}
+    public void setInitialBalance(BigDecimal initialBalance) {
+        this.initialBalance = initialBalance;
+    }
 
-	public void setNotes(String notes) {
-		this.notes = notes;
-	}
+    public BigDecimal getClosingBalance() {
+        return closingBalance;
+    }
 
-	public Date getLastUpdatedDate() {
-		return lastUpdatedDate;
-	}
+    public void setClosingBalance(BigDecimal closingBalance) {
+        this.closingBalance = closingBalance;
+    }
 
-	public void setLastUpdatedDate(Date lastUpdatedDate) {
-		this.lastUpdatedDate = lastUpdatedDate;
-	}
+    public String getNotes() {
+        return notes;
+    }
 
-	public String getLastUpdatedBy() {
-		return lastUpdatedBy;
-	}
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
 
-	public void setLastUpdatedBy(String lastUpdatedBy) {
-		this.lastUpdatedBy = lastUpdatedBy;
-	}
+    public Date getLastUpdatedDate() {
+        return lastUpdatedDate;
+    }
 
-	public Date getCreatedDate() {
-		return createdDate;
-	}
+    public void setLastUpdatedDate(Date lastUpdatedDate) {
+        this.lastUpdatedDate = lastUpdatedDate;
+    }
 
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
-	}
+    public String getLastUpdatedBy() {
+        return lastUpdatedBy;
+    }
 
-	public String getCreatedBy() {
-		return createdBy;
-	}
+    public void setLastUpdatedBy(String lastUpdatedBy) {
+        this.lastUpdatedBy = lastUpdatedBy;
+    }
 
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
-	}
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
 
 }

@@ -18,6 +18,7 @@
         <mapping class="com.baba.tutorial.hibernate.domain.Credential"/>
         <mapping class="com.baba.tutorial.hibernate.domain.Account"/>
         <mapping class="com.baba.tutorial.hibernate.domain.Transaction"/>
+        <mapping class="com.baba.tutorial.hibernate.domain.Budget"/>
         
     </session-factory>
 </hibernate-configuration>

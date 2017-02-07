@@ -13,7 +13,6 @@ public final class HibernateUtil {
 		Configuration configuration = new Configuration();
 		configuration.configure("hibernate.cfg.xml");
 		// configuration.addAnnotatedClass(User.class)
-		return configuration.buildSessionFactory(
-				new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build());
+		return configuration.buildSessionFactory(new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build());
 	}
 }
