@@ -1,12 +1,11 @@
 package com.baba.tutorial.jpa;
 
-import com.baba.tutorial.hibernate.domain.Bank;
+import com.baba.tutorial.jpa.domain.Employee;
+import com.baba.tutorial.jpa.util.JPAFactory;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
-import java.util.Date;
 
 /**
  * Created by Babaprakash Dabbara on 05-02-2017.
@@ -22,26 +21,23 @@ public class JPAUtil {
 		EntityTransaction entityTransaction = null;
 
 		try {
-			entityManagerFactory = Persistence.createEntityManagerFactory("hibernate");
+			entityManagerFactory = JPAFactory.getEntityManagerFactory();
 			entityManager = entityManagerFactory.createEntityManager();
 			entityTransaction = entityManager.getTransaction();
 			entityTransaction.begin();
-
-			entityManager.persist(createBank());
+			entityManager.persist(createEmployee());
 			entityTransaction.commit();
+		} finally {
 			entityManager.close();
 			entityManagerFactory.close();
-		} finally {
 		}
 	}
 
-	private static Bank createBank() {
-		Bank bank = new Bank();
-		bank.setName("First United Federal");
-		bank.setCreatedBy("Kevin Bowersox");
-		bank.setCreatedDate(new Date());
-		bank.setLastUpdatedBy("Kevin Bowersox");
-		bank.setLastUpdatedDate(new Date());
-		return bank;
+	private static Employee createEmployee() {
+		Employee employee = new Employee();
+		employee.setEmployeeId(123);
+		employee.setEmployeeName("Babaprakash");
+		employee.setDesignation("Senior Consultant");
+		return employee;
 	}
 }
